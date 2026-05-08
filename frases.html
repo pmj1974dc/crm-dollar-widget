@@ -1,9 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>CRM Motivación Widget</title>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+
+    body{
+        font-family: Arial, sans-serif;
+        background: transparent;
+        overflow:hidden;
+    }
+
+    .widget{
+        width:100%;
+        height:120px;
+
+        display:flex;
+        align-items:center;
+        justify-content:center;
+
+        padding:20px;
+
+        border-radius:16px;
+
+        background: linear-gradient(
+            135deg,
+            rgba(15,23,42,0.95),
+            rgba(30,41,59,0.92)
+        );
+
+        color:white;
+
+        box-shadow:
+            0 4px 20px rgba(0,0,0,0.25);
+
+        position:relative;
+
+        overflow:hidden;
+    }
+
+    .widget::before{
+        content:'';
+        position:absolute;
+
+        width:300px;
+        height:300px;
+
+        background:rgba(255,255,255,0.04);
+
+        border-radius:50%;
+
+        top:-180px;
+        right:-120px;
+    }
+
+    .content{
+        text-align:center;
+        z-index:2;
+        width:100%;
+    }
+
+    .title{
+        font-size:13px;
+        letter-spacing:1px;
+        text-transform:uppercase;
+        color:#93c5fd;
+        margin-bottom:10px;
+    }
+
+    .phrase{
+        font-size:20px;
+        font-weight:bold;
+        line-height:1.4;
+
+        opacity:1;
+        transition:opacity 1s ease;
+    }
+
+    .footer{
+        margin-top:10px;
+        font-size:11px;
+        color:#cbd5e1;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="widget">
+
+    <div class="content">
+
+        <div class="title">
+            💡 Consejo Comercial
+        </div>
+
+        <div class="phrase" id="phrase">
+            🚀 Las oportunidades no esperan.
+        </div>
+
+        <div class="footer">
+            Integratec CRM Experience
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
 const frases = [
- "Las ventas no ocurren por suerte.",
- "Cada cliente satisfecho abre nuevas oportunidades.",
- "El seguimiento constante genera confianza."
+
+    "🚀 Las oportunidades no esperan.",
+
+    "📈 El seguimiento constante genera resultados.",
+
+    "🤝 La confianza se construye en cada interacción.",
+
+    "💡 Cada cliente satisfecho trae nuevas oportunidades.",
+
+    "⚡ La velocidad de respuesta marca la diferencia.",
+
+    "🌎 Integratec conecta tecnología y negocios.",
+
+    "🔥 Un buen CRM acelera las ventas.",
+
+    "🎯 La organización transforma equipos comerciales."
+
 ];
 
-setInterval(() => {
-   // troca texto
-}, 8000);
+let index = 0;
+
+const phraseElement = document.getElementById("phrase");
+
+function trocarFrase(){
+
+    phraseElement.style.opacity = 0;
+
+    setTimeout(() => {
+
+        index++;
+
+        if(index >= frases.length){
+            index = 0;
+        }
+
+        phraseElement.innerHTML = frases[index];
+
+        phraseElement.style.opacity = 1;
+
+    }, 800);
+
+}
+
+setInterval(trocarFrase, 7000);
+
+</script>
+
+</body>
+</html>
